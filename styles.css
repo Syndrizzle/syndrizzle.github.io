@@ -1,17 +1,42 @@
 :root {
-  --primary: #8a63ff; /* This is the primary color. */
-  --secondary: #A591FF; /* This is the secondary color. */
-  --bg: #1F1D36; /* This is the background color. */
-  --heading: #E0DEF4; /* This is the color for headings. */
-  --text: #D5D4F0; /* This is the color for text. */
+  --primary: #89b4fa; /* This is the primary color. */
+  --secondary: #a6e3a1; /* This is the secondary color. */
+  --bg: #1e1e2e; /* This is the background color. */
+  --heading: #cdd6f4; /* This is the color for headings. */
+  --text: #cdd6f4; /* This is the color for text. */
 }
 
 body {
-  font-family: system-ui, sans-serif; /* This sets the font family. */
-  line-height: 1.5; /* This sets the line height. */
+  font-family: Inter, sans-serif; /* This sets the font family. */
+  line-height: 1.3; /* This sets the line height. */
   background-color: var(--bg); /* This sets the background color. */
   color: var(--text); /* This sets the text color. */
 }
+
+.port_about, .port_ed, .port_skills, .port_heading, .port_contact, .port_contri, .port_projects {
+  display: inline-block;
+  position: relative;
+  color: var(--primary);
+}
+
+.port_about::after, .port_skills::after, .port_ed::after, .port_heading::after, .port_contact::after, .port_contri::after, .port_projects::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.port_about:hover::after, .port_skills:hover::after, .port_ed:hover::after, .port_heading:hover::after, .port_contact:hover::after, .port_contri:hover::after, .port_projects:hover::after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 
 h1, h2, h3 {
   color: var(--heading); /* This sets the color for headings. */
@@ -19,23 +44,18 @@ h1, h2, h3 {
 
 h1 {
   font-size: 5.5rem; /* This sets the font size for h1 headings. */
-  margin-bottom: 20px; /* This sets the margin for h1 headings. */
+  /* margin-bottom: 20px; This sets the margin for h1 headings. */
 }
 
 h2 {
   font-size: 4rem; /* This sets the font size for h2 headings. */
-  width: 100%; /* This sets the width for h2 headings. */
+  /* width: 100%; This sets the width for h2 headings. */
   align-self: center; /* This centers the h2 headings vertically. */
   text-align: center; /* This centers the h2 headings horizontally. */
 }
 
 h3 {
   font-size: 2.5rem; /* This sets the font size for h3 headings. */
-  margin-bottom: 10px; /* This sets the margin for h3 headings. */
-}
-
-section {
-  padding: 60px 20px; /* This sets the padding for sections. */
 }
 
 img {
@@ -44,10 +64,14 @@ img {
   border: 2px solid var(--primary); /* This adds a border around images. */
 }
 
-.logo_csi {
-  max-width: 200px; /* This sets the maximum width for the CSI logo. */
-  border-radius: 100px; /* This adds rounded corners to the CSI logo. */
-  outline: none; /* This removes the outline from the CSI logo. */
+.logo_syn {
+  transition: transform .7s ease-in-out;
+  max-width: 200px; /* This sets the maximum width for the Profile Picture. */
+  border-radius: 100px; /* This adds rounded corners to the Profile Picture. */
+}
+
+.logo_syn:hover {
+  transform: rotate(360deg);
 }
 /* Header */
 
@@ -62,6 +86,7 @@ header {
   padding: 20px 0;
 }
 
+
 nav a {
   /* The nav links will have a margin of 10px, padding of 8px 15px, a border radius of 5px, no text decoration, and a color of var(--text). */
   margin: 10px;
@@ -69,12 +94,19 @@ nav a {
   border-radius: 5px;
   text-decoration: none;
   color: var(--text);
-  font-size: 250%;
+  font-size: 200%;
+  border-radius: 100rem;
 }
 
-nav a:hover {
-  /* When the nav links are hovered over, they will change to a background color of var(--primary). */
+.about_nav, .skills_nav, .projects_nav, .contact_nav {
+  transition: box-shadow .3s;
+}
+
+.about_nav:hover, .skills_nav:hover, .projects_nav:hover, .contact_nav:hover {
+  box-shadow: 0 0 100px #89b4fa85;
   background: var(--primary);
+  color: var(--bg);
+  border-radius: 100rem;
 }
 
 /* Sections */
@@ -91,7 +123,6 @@ section {
 #about p {
   /* The about page paragraph will have a max-width of 800px, a margin of 20px 0, a font size of 1.7rem, and will be text-aligned to the center. */
   max-width: 800px;
-  margin: 20px 0;
   font-size: 1.7rem;
   text-align: center;
 }
@@ -111,11 +142,19 @@ section {
 
 /* Skills */
 
-.skill-icons {
+
+.fa-linux, .fa-python, .fa-figma, .fa-html5, .fa-css3-alt, .fa-react, .fa-js, .fa-node {
   /* The skill icons will have a font size of clamp(2rem, 5vw, 5rem), a margin of 30px 0, and a color of var(--primary). */
   font-size: clamp(2rem, 5vw, 5rem);
-  margin: 30px 0;
   color: var(--primary);
+  transition: color .5s ease-in;
+  transition: text-shadow .3s ease-in;
+  margin: 30px 10px;
+}
+
+.fa-linux:hover, .fa-python:hover, .fa-figma:hover, .fa-html5:hover, .fa-css3-alt:hover, .fa-react:hover, .fa-js:hover, .fa-node:hover {
+  color: var(--secondary);
+  text-shadow: 0 0 50px #a6e3a1;
 }
 
 /* This code defines the style for the education section. */
@@ -132,21 +171,20 @@ section {
 
 #education h2 {
   /* The h2 headings in the education section will have a margin-bottom of 30px and will be displayed full-width. */
-  margin-bottom: 30px;
   max-width: 100%;
 }
 
 #education h3 {
   /* The h3 headings in the education section will have a margin-bottom of 10px and will be displayed full-width. */
-  margin-bottom: 10px;
   max-width: 100%;
 }
 
 #education p {
   /* The paragraphs in the education section will have a line-height of 1.6, will be displayed full-width, and will have a font size of 180%. */
-  line-height: 1.6;
+  line-height: 1;
   max-width: 100%;
   font-size: 180%;
+  color:  #7f849c;
 }
 
 #education ul {
@@ -160,7 +198,7 @@ section {
 
 #education li {
   /* The list items in the education section will have a line-height of 1.8 and will be displayed full-width. */
-  line-height: 1.8;
+  line-height: 1;
   max-width: 100%;
 }
 
@@ -203,6 +241,20 @@ section {
   padding: 20px;
 }
 
+.contributions {
+  /* The projects container will have overflow-x: auto, overflow-y: hidden, and white-space: nowrap. This will allow the projects to scroll horizontally if they are too wide to fit on the screen. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  /* The projects container will be centered on the page and will have a max-width of 1000px. */
+  margin: 0 auto;
+  max-width: 1000px;
+
+  /* The projects container will have padding of 20px. */
+  padding: 20px;
+}
+
 /* Individual Projects */
 
 .project {
@@ -211,8 +263,9 @@ section {
   width: 300px;
   vertical-align: top;
   margin-right: 20px;
-  background-color: #38355c;
+  background-color: #313244;
   border-radius: 10px;
+  border: #45475a 3px solid;
 
   /* The project will have padding of 20px between the content. */
   padding: 20px;
@@ -235,8 +288,44 @@ section {
 
 .project p {
   /* The paragraphs for each project will have a color of #8c87a2. */
-  color: #8c87a2;
+  color: #7f849c;
 }
+
+.contribution {
+  /* Each project will be displayed as an inline-block element with a width of 300px and a vertical alignment of top. It will also have a margin-right of 20px, a background color of #38355c, and rounded borders with a radius of 10px. */
+  display: inline-block; 
+  width: 300px;
+  vertical-align: top;
+  margin-right: 20px;
+  background-color: #313244;
+  border-radius: 10px;
+  border: #45475a 3px solid;
+
+  /* The project will have padding of 20px between the content. */
+  padding: 20px;
+}
+
+/* Remove margin from last project */
+
+.contribution:last-child {
+  /* The last project will not have a margin-right of 20px. */
+  margin-right: 0;
+}
+
+/* Project Content Styling */
+
+.contribution h3 {
+  /* The h3 headings for each project will have a margin-top of 10px and a font size of 1.3rem. */
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+
+.contribution p {
+  /* The paragraphs for each project will have a color of #8c87a2. */
+  color: #7f849c;
+}
+
+
 
 /* This code defines the style for the contact section. */
 
@@ -274,6 +363,9 @@ section {
     width: 180px;
     align-self: center;
   }
+
+
+  
 
 }
   
